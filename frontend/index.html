@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEOS Wallet - From Egypt to the World | wallet.teosegypt.com</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-amber-50 min-h-screen">
+    <!-- Header -->
+    <header class="pharaoh-gradient text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <img src="assets/teos-logo.png" alt="TEOS Wallet" class="w-10 h-10 pharaoh-pulse">
+                    <div>
+                        <h1 class="text-xl font-bold">TEOS Wallet</h1>
+                        <p class="text-sm opacity-90">From Egypt to the World</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        <i class="fas fa-crown mr-1"></i>
+                        Pharaoh Tier
+                    </span>
+                    <button class="text-white hover:bg-white/20 p-2 rounded">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="relative h-32 overflow-hidden">
+        <img src="assets/teos-banner.jpg" alt="Egyptian Heritage" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-amber-900/70 flex items-center justify-center">
+            <div class="text-center text-white">
+                <i class="fas fa-landmark text-3xl mb-2 gold-shimmer"></i>
+                <p class="text-lg font-semibold">Welcome to the Digital Pharaoh's Treasury</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto p-4 space-y-6">
+        <!-- Connection Status -->
+        <div id="connect-section" class="wallet-card gold-glow">
+            <div class="p-8 text-center">
+                <i class="fas fa-wallet text-6xl text-amber-600 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2">Connect Your Wallet</h2>
+                <p class="text-gray-600 mb-6">
+                    Access the most advanced multi-chain wallet with Egyptian heritage
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <button onclick="connectWallet('mobile')" class="pharaoh-gradient text-white py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">
+                        <i class="fas fa-mobile-alt mr-2"></i>
+                        Mobile Wallet
+                    </button>
+                    <button onclick="connectWallet('hardware')" class="border-2 border-amber-300 text-amber-700 py-3 px-6 rounded-lg hover:bg-amber-50 transition-colors">
+                        <i class="fas fa-lock mr-2"></i>
+                        Hardware Wallet
+                    </button>
+                    <button onclick="connectWallet('qr')" class="border-2 border-blue-300 text-blue-700 py-3 px-6 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-qrcode mr-2"></i>
+                        QR Connect
+                    </button>
+                </div>
+                <div class="flex items-center justify-center space-x-6 text-sm text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt mr-1"></i>
+                        Bank-level Security
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-globe mr-1"></i>
+                        Multi-chain Support
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-bolt mr-1"></i>
+                        Lightning Fast
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet Dashboard (Hidden initially) -->
+        <div id="wallet-dashboard" class="hidden space-y-6">
+            <!-- Portfolio Overview -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Main Balance Card -->
+                <div class="lg:col-span-2 wallet-card">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold flex items-center">
+                                    <i class="fas fa-wallet mr-2 text-amber-600"></i>
+                                    Portfolio Balance
+                                </h3>
+                                <p class="text-gray-600">Total value across all networks</p>
+                            </div>
+                            <button onclick="toggleBalance()" class="text-gray-500 hover:text-gray-700">
+                                <i id="balance-toggle" class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="text-center mb-6">
+                            <div id="total-balance" class="balance-display text-4xl font-bold mb-2">$2,847.52</div>
+                            <div class="flex items-center justify-center text-green-600">
+                                <i class="fas fa-trending-up mr-1"></i>
+                                +12.5% (24h)
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="network-balances">
+                            <!-- Network balances will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="wallet-card">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">Quick Actions</h3>
+                        <p class="text-gray-600 mb-4">Manage your crypto assets</p>
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <button onclick="sendCrypto()" class="pharaoh-gradient text-white h-16 rounded-lg flex flex-col items-center justify-center hover:opacity-90">
+                                <i class="fas fa-paper-plane text-lg mb-1"></i>
+                                Send
+                            </button>
+                            <button onclick="receiveCrypto()" class="border-2 border-amber-300 text-amber-700 h-16 rounded-lg flex flex-col items-center justify-center hover:bg-amber-50">
+                                <i class="fas fa-download text-lg mb-1"></i>
+                                Receive
+                            </button>
+                            <button onclick="swapCrypto()" class="border-2 border-blue-300 text-blue-700 h-16 rounded-lg flex flex-col items-center justify-center hover:bg-blue-50">
+                                <i class="fas fa-exchange-alt text-lg mb-1"></i>
+                                Swap
+                            </button>
+                            <button onclick="stakeCrypto()" class="border-2 border-green-300 text-green-700 h-16 rounded-lg flex flex-col items-center justify-center hover:bg-green-50">
+                                <i class="fas fa-coins text-lg mb-1"></i>
+                                Stake
+                            </button>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                            <div class="flex items-center text-amber-800 mb-1">
+                                <i class="fas fa-star mr-2"></i>
+                                <span class="text-sm font-medium">Daily Mining Reward</span>
+                            </div>
+                            <div class="text-lg font-bold text-amber-900">+75 TEOS</div>
+                            <div class="text-xs text-amber-700">Available in 2h 15m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="wallet-card">
+                <div class="border-b border-gray-200">
+                    <nav class="flex space-x-8 px-6">
+                        <button onclick="showTab('assets')" class="tab-button active py-4 px-1 border-b-2 border-amber-500 text-amber-600 font-medium">
+                            Assets
+                        </button>
+                        <button onclick="showTab('defi')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                            DeFi
+                        </button>
+                        <button onclick="showTab('nft')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                            NFTs
+                        </button>
+                        <button onclick="showTab('history')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                            History
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="p-6">
+                    <!-- Assets Tab -->
+                    <div id="assets-tab" class="tab-content">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-4">Your Assets</h4>
+                                <div id="asset-list" class="space-y-3">
+                                    <!-- Assets will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-4">Wallet Address</h4>
+                                <div class="bg-gray-50 p-3 rounded-lg mb-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-mono text-sm break-all" id="wallet-address">7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgHkv</span>
+                                        <button onclick="copyAddress()" class="text-gray-500 hover:text-gray-700 ml-2">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button onclick="showQR()" class="flex-1 border-2 border-amber-300 text-amber-700 py-2 px-4 rounded-lg hover:bg-amber-50">
+                                        <i class="fas fa-qrcode mr-2"></i>
+                                        QR Code
+                                    </button>
+                                    <button onclick="copyAddress()" class="flex-1 border-2 border-amber-300 text-amber-700 py-2 px-4 rounded-lg hover:bg-amber-50">
+                                        <i class="fas fa-copy mr-2"></i>
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DeFi Tab -->
+                    <div id="defi-tab" class="tab-content hidden">
+                        <div class="text-center py-12">
+                            <i class="fas fa-coins text-6xl text-amber-600 mb-4"></i>
+                            <h4 class="text-lg font-semibold mb-2">DeFi Dashboard</h4>
+                            <p class="text-gray-600 mb-4">Stake, lend, and earn with the best DeFi protocols</p>
+                            <button class="pharaoh-gradient text-white py-3 px-6 rounded-lg hover:opacity-90">
+                                Explore DeFi
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- NFT Tab -->
+                    <div id="nft-tab" class="tab-content hidden">
+                        <div class="text-center py-12">
+                            <i class="fas fa-landmark text-6xl text-amber-600 mb-4"></i>
+                            <h4 class="text-lg font-semibold mb-2">Pharaoh's Treasury</h4>
+                            <p class="text-gray-600 mb-4">Discover and collect Egyptian-themed NFTs</p>
+                            <button class="pharaoh-gradient text-white py-3 px-6 rounded-lg hover:opacity-90">
+                                Explore Marketplace
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- History Tab -->
+                    <div id="history-tab" class="tab-content hidden">
+                        <h4 class="text-lg font-semibold mb-4">Transaction History</h4>
+                        <div id="transaction-list" class="space-y-3">
+                            <!-- Transactions will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-gray-900 text-white p-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <img src="assets/teos-logo.png" alt="TEOS" class="w-6 h-6">
+                <span class="font-semibold">TEOS Wallet</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">
+                From the wisdom of the pharaohs to the innovation of the digital age
+            </p>
+            <div class="flex items-center justify-center space-x-6 text-sm">
+                <span>🔒 Bank-level Security</span>
+                <span>🌍 Global Access</span>
+                <span>⚡ Lightning Fast</span>
+                <span>🏛️ Egyptian Heritage</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wallet.js"></script>
+</body>
+</html>
+
