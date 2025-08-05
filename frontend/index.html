@@ -26,10 +26,7 @@
                         <i class="fas fa-crown mr-1"></i>
                         Pharaoh Tier
                     </span>
-                    <button class="text-white hover:bg-white/20 p-2 rounded" onclick="toggleDarkMode()">
-                        <i class="fas fa-adjust"></i>
-                    </button>
-                    <button class="text-white hover:bg-white/20 p-2 rounded">
+                    <button class="text-white hover:bg-white/20 p-2 rounded" onclick="openSettings()">
                         <i class="fas fa-cog"></i>
                     </button>
                 </div>
@@ -109,7 +106,7 @@
                             </button>
                         </div>
                         <div class="text-center mb-6">
-                            <div id="total-balance" class="balance-display text-4xl font-bold mb-2">$2,847.52</div>
+                            <div id="total-balance" class="balance-display text-4xl font-bold mb-2">$0.00</div>
                             <div class="flex items-center justify-center text-green-600">
                                 <i class="fas fa-trending-up mr-1"></i>
                                 +12.5% (24h)
@@ -154,22 +151,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Market Data Section -->
-            <div id="market-data-section" class="wallet-card">
-                <h3 class="text-lg font-semibold mb-2">Market Data</h3>
-                <div id="market-data-list" class="space-y-3">
-                    <!-- Market data will be populated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- User Identity Section -->
-            <div id="identity-section" class="wallet-card">
-                <h3 class="text-lg font-semibold mb-2">User  Identity</h3>
-                <button onclick="createIdentity(userId)" class="pharaoh-gradient text-white py-2 px-4 rounded-lg hover:opacity-90">
-                    Create Decentralized Identity
-                </button>
             </div>
 
             <!-- Tabs -->
