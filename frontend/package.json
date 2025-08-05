@@ -1,0 +1,22 @@
+{
+  "name": "teos-wallet-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for TEOS Wallet application",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "serve": "^14.0.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "teos",
+    "wallet",
+    "frontend"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
