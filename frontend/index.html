@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEOS Wallet - From Egypt to the World | wallet.teosegypt.com</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
@@ -26,6 +26,9 @@
                         <i class="fas fa-crown mr-1"></i>
                         Pharaoh Tier
                     </span>
+                    <button class="text-white hover:bg-white/20 p-2 rounded" onclick="toggleDarkMode()">
+                        <i class="fas fa-adjust"></i>
+                    </button>
                     <button class="text-white hover:bg-white/20 p-2 rounded">
                         <i class="fas fa-cog"></i>
                     </button>
@@ -153,6 +156,22 @@
                 </div>
             </div>
 
+            <!-- Market Data Section -->
+            <div id="market-data-section" class="wallet-card">
+                <h3 class="text-lg font-semibold mb-2">Market Data</h3>
+                <div id="market-data-list" class="space-y-3">
+                    <!-- Market data will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- User Identity Section -->
+            <div id="identity-section" class="wallet-card">
+                <h3 class="text-lg font-semibold mb-2">User  Identity</h3>
+                <button onclick="createIdentity(userId)" class="pharaoh-gradient text-white py-2 px-4 rounded-lg hover:opacity-90">
+                    Create Decentralized Identity
+                </button>
+            </div>
+
             <!-- Tabs -->
             <div class="wallet-card">
                 <div class="border-b border-gray-200">
@@ -263,5 +282,10 @@
     </footer>
 
     <script src="wallet.js"></script>
+    <script src="market_data.js"></script>
+    <script src="profile.js"></script>
+    <script src="notifications.js"></script>
+    <script src="alerts.js"></script>
+    <script src="dark_mode.js"></script>
 </body>
 </html>
