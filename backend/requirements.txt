@@ -9,4 +9,3 @@ bitcoin==1.1.42
 qrcode==7.4.2
 Pillow==10.0.1
 gunicorn==21.2.0
-
