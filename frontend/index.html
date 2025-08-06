@@ -29,6 +29,9 @@
                     <button class="text-white hover:bg-white/20 p-2 rounded" onclick="openSettings()">
                         <i class="fas fa-cog"></i>
                     </button>
+                    <button class="text-white hover:bg-white/20 p-2 rounded" onclick="toggleDarkMode()">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -153,6 +156,21 @@
                 </div>
             </div>
 
+            <!-- Trading Bots Section -->
+            <div class="wallet-card">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-2">Trading Bots</h3>
+                    <p class="text-gray-600 mb-4">Create and manage your trading bots</p>
+                    <div class="grid grid-cols-1 gap-3 mb-4">
+                        <input type="text" id="bot-strategy" placeholder="Strategy Name" class="border p-2 rounded">
+                        <textarea id="bot-parameters" placeholder="Parameters (JSON format)" class="border p-2 rounded"></textarea>
+                        <button onclick="createTradingBot(userId, document.getElementById('bot-strategy').value, document.getElementById('bot-parameters').value)" class="pharaoh-gradient text-white py-2 rounded-lg hover:opacity-90">
+                            Create Trading Bot
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tabs -->
             <div class="wallet-card">
                 <div class="border-b border-gray-200">
@@ -268,5 +286,6 @@
     <script src="notifications.js"></script>
     <script src="alerts.js"></script>
     <script src="dark_mode.js"></script>
+    <script src="trading_bots.js"></script>
 </body>
 </html>
